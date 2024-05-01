@@ -43,5 +43,3 @@ Contributions are what make the open-source community such an amazing place to l
 ## Contact
 
 Developer: Dr. Sambadi Majumder - sambadimajumder@gmail.com
-
-Project Link: [https://github.com/yourusername/VARUNA](https://github.com/yourusername/VARUNA)
