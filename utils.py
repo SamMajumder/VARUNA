@@ -30,7 +30,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 def extract_bounds(Country = "India"):  
     
     # Relative path to the shapefile
-    shapefile_path = 'Data\\Shapefile\\World_Countries_Generalized.shp'
+    shapefile_path = 'Data/Shapefile/World_Countries_Generalized.shp'
 
     # Read the shapefile
     gdf = gpd.read_file(shapefile_path) 

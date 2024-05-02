@@ -1,7 +1,11 @@
 # V.A.R.U.N.A. - Visual Analyzer for Regional Understanding of Numerical Atmospheric forecasts
 
 
-![Alt text](https://raw.githubusercontent.com/SamMajumder/VARUNA/main/VARUNA-concept-art.webp)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/SamMajumder/VARUNA/main/VARUNA-concept-art.webp" alt="Concept Image">
+  <br>
+  Created using DALL-E by OpenAI
+</p>
 
 
 ## About V.A.R.U.N.A.

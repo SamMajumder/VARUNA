@@ -4,10 +4,10 @@ install.packages("reticulate")
 library(reticulate)
 
 # Create a virtual environment for the project
-virtualenv_create(envname = "VARUNA")
+#virtualenv_create(envname = "VARUNA")
 
 # Use the created virtual environment
-use_virtualenv("VARUNA", required = TRUE)
+#use_virtualenv("VARUNA", required = TRUE)
 
 # Install necessary Python packages
 py_install(c("geopandas", "matplotlib", "boto3", "s3fs", "xarray", 
@@ -33,3 +33,4 @@ install.packages("shiny")
 install.packages("shinyWidgets")
 install.packages("htmlwidgets")
 install.packages("RColorBrewer")
+install.packages("shiny.exe")
