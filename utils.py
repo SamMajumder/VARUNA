@@ -9,9 +9,6 @@ Created on Fri Apr 26 19:43:37 2024
 import os
 import geopandas as gpd
 import matplotlib.pyplot as plt
-
-#### Set Up AWS Credentials
-
 import boto3
 from botocore import UNSIGNED
 from botocore.client import Config

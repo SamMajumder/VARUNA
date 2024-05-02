@@ -75,15 +75,25 @@ ui <- fluidPage(
                            h3("About V.A.R.U.N.A."),
                            p("V.A.R.U.N.A., named after the Hindu deity of sky, ocean and celestial order, is a tool for visualizing atmospheric forecasts derived from CMIP6 models on a regional scale."),
                            p("This tool enables you to select a region around a country, choose from a variety of climate models, and examine different climate variables across several Shared Socioeconomic Pathways (SSPs)."),
+                           p("Learn more about CMIP6 models, the climate forecasts and about the Intergovernmental Panel on Climate Change (IPCC):"),
+                           p(tags$a(href="https://www.carbonbrief.org/cmip6-the-next-generation-of-climate-models-explained/", target="_blank", "Simple explanation on CMIP6 and IPCC")),
+                           p(tags$a(href="https://www.ipcc.ch/", target="_blank", "IPCC")),
+                           p(tags$a(href="https://www.carbonbrief.org/cmip6-the-next-generation-of-climate-models-explained/", target="_blank", "CMIP6")),
                            h4("Climate Models and Scenarios"),
                            p("This tool enables the user to visualize forecasts from 35 CMIP6 global climate models. These models help predict how the climate could evolve based on various internal and external factors."),
                            p("The SSPs represent different pathways of socioeconomic development, affecting greenhouse gas emissions and land use in the future. The scenarios available in V.A.R.U.N.A. include SSP 126 (a sustainable path aiming for a low greenhouse gas concentration), SSP 245 (a middle-of-the-road scenario), SSP 370 (a high greenhouse gas emissions due to energy-intensive consumption), and SSP 585 (the highest greenhouse gas emissions pathway, representing a future with no policy changes to curb emissions)."),
+                           p(tags$a(href="https://www.carbonbrief.org/explainer-how-shared-socioeconomic-pathways-explore-future-climate-change/", target="_blank", "A great resource to learn more about SSPs apart from the original publication.")),
+                           h4("Citation"),
+                           p("Riahi, K., van Vuuren, D. P., Kriegler, E., Edmonds, J., O’Neill, B. C., Fujimori, S., Bauer, N., Calvin, K., Dellink, R., Fricko, O., Lutz, W., Popp, A., Crespo Cuaresma, J., KC, S., Leimbach, M., Jiang, L., Kram, T., Rao, S., Emmerling, J., ... Tavoni, M. (2017). The Shared Socioeconomic Pathways and their energy, land use, and greenhouse gas emissions implications: An overview. Global Environmental Change, 42, 153-168. ", tags$a(href="https://doi.org/10.1016/j.gloenvcha.2016.05.009", target="_blank", "https://doi.org/10.1016/j.gloenvcha.2016.05.009")),
                            h4("Climate Variables"),
                            p("tas (Temperature at Surface), tasmax (Maximum Temperature at Surface), tasmin (Minimum Temperature at Surface), pr (mean precipitation flux), hurs (near surface relative humidity), huss (Specific Humidity), rlds (Downwelling Longwave Radiation at Surface), rsds (Downwelling Shortwave Radiation at Surface), and sfcWind (Surface Wind Speed)."),
-                           h4("Data Source"),
+                           p("More information about these variables and how they are measured can be found here: https://pcmdi.llnl.gov/mips/cmip3/variableList.html"),
+                           h5("Data Source"),
                            p("The NEX-GDDP-CMIP6 dataset, provided by NASA Earth Exchange, comprises global downscaled climate scenarios derived from the General Circulation Model (GCM) runs conducted under CMIP6. Developed in support of the IPCC's Sixth Assessment Report, these high-resolution, bias-corrected projections are distributed through the Earth System Grid Federation. The dataset spans all four 'Tier 1' SSPs, offering insights into climate change impacts on processes sensitive to climate gradients and local topography."),
-                           p("To use V.A.R.U.N.A., simply select your desired region, time period, climate model, and variable. Hit submit to view the data visualized on interactive maps for each SSP scenario. Utilize the dynamic slider to explore different time layers and observe how climate factors might change over time in your selected region."),
-                           p("This tool was developed by Dr. Sambadi Majumder. For any questions and suggestions please feel free to email sambadimajumder@gmail.com")
+                           h5("Citation"),
+                           p("NASA Earth Exchange Global Daily Downscaled Projections (NEX-GDDP-CMIP6) was accessed on 2024-05-02 from https://registry.opendata.aws/nex-gddp-cmip6. NEX-GDDP-CMIP6 data was accessed on [date] from https://registry.opendata.aws/nex-gddp-cmip6"),
+                           p("This tool was developed by Dr. Sambadi Majumder. For any questions and suggestions please feel free to email sambadimajumder@gmail.com"),
+                           p("The source code and citations for libraries used can be found here: https://github.com/SamMajumder/VARUNA")
                   )
       ),
       textOutput("status")
