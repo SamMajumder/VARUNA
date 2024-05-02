@@ -1,16 +1,30 @@
 
 
+###########
+## install R PACKAGES 
+#### 
+install.packages("reticulate")
+install.packages("here")
+install.packages("terra")
+install.packages("sf")
+install.packages("leaflet")
+install.packages("tidyverse")
+install.packages("shiny")
+install.packages("shinyWidgets")
+install.packages("htmlwidgets")
+install.packages("RColorBrewer")
+install.packages("shiny.exe")
+install.packages("leaflet.providers")
 
 
-
-
+### loading reticulate
 library(reticulate)
 
 
 # Install necessary Python packages
 py_install(c("geopandas", "matplotlib", "boto3", "s3fs", "xarray", "h5netcdf", "shapely", "rioxarray","netCDF4"))
 
-
+### loading the rest of the necessary R package
 library(here)
 library(terra)
 library(sf)
@@ -26,6 +40,7 @@ library(leaflet.providers)
 # Use the created virtual environment
 #use_virtualenv("VARUNA", required = TRUE)
 
+## path python functions
 here::here("utils.py") 
 
 ## source the python script
