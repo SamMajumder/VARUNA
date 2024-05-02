@@ -129,14 +129,14 @@ NASA Earth Exchange Global Daily Downscaled Projections (NEX-GDDP-CMIP6) was acc
 
 ### Important Scripts
 
-#### `app.R`
-    This R script orchestrates the user interface and server logic of the Shiny application for the V.A.R.U.N.A. project. It sets up the interactive web-based dashboard which allows users to visualize atmospheric forecasts derived from CMIP6 models. The script integrates various R packages for data handling (`terra`, `sf`), visualization (`leaflet`, `RColorBrewer`), and web app development (`shiny`, `shinyWidgets`). It uses a Python virtual environment through the `reticulate` package to leverage utility functions defined in Python for data retrieval and preprocessing.
+#### **`app.R`**
+This R script orchestrates the user interface and server logic of the Shiny application for the V.A.R.U.N.A. project. It sets up the interactive web-based dashboard which allows users to visualize atmospheric forecasts derived from CMIP6 models. The script integrates various R packages for data handling (`terra`, `sf`), visualization (`leaflet`, `RColorBrewer`), and web app development (`shiny`, `shinyWidgets`). It uses a Python virtual environment through the `reticulate` package to leverage utility functions defined in Python for data retrieval and preprocessing.
 
-#### `R-functions.R`
-    This R script contains custom functions used within the Shiny application to handle specific tasks such as dynamic map generation and data manipulation. The `createMap` function, for instance, dynamically generates leaflet maps based on user inputs from the app interface, adjusting display properties according to the selected climate data layers. This script enhances modularity and reusability by separating function definitions from the main application logic in `app.R`.
+#### **`R-functions.R`**
+This R script contains custom functions used within the Shiny application to handle specific tasks such as dynamic map generation and data manipulation. The `createMap` function, for instance, dynamically generates leaflet maps based on user inputs from the app interface, adjusting display properties according to the selected climate data layers. This script enhances modularity and reusability by separating function definitions from the main application logic in `app.R`.
 
-#### `utils.py`
-    This Python script provides utility functions for data retrieval and preprocessing, essential for the backend operations of the V.A.R.U.N.A. project. It includes functions to download and process climate model data from the Registry of Open Data on AWS, using libraries such as `boto3`, `s3fs`, and `xarray` to handle data in various formats (e.g., netCDF). The script also integrates spatial analysis tools from `geopandas` and `rioxarray` to adjust and prepare the data for visualization in the Shiny application.
+#### **`utils.py`**
+This Python script provides utility functions for data retrieval and preprocessing, essential for the backend operations of the V.A.R.U.N.A. project. It includes functions to download and process climate model data from the Registry of Open Data on AWS, using libraries such as `boto3`, `s3fs`, and `xarray` to handle data in various formats (e.g., netCDF). The script also integrates spatial analysis tools from `geopandas` and `rioxarray` to adjust and prepare the data for visualization in the Shiny application.
 
 
 ## Contact
