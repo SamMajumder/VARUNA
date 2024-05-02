@@ -12,7 +12,7 @@
 
 V.A.R.U.N.A., named after the Hindu deity of sky, ocean, and celestial order, is a tool designed for visualizing atmospheric forecasts derived from the Coupled Model Intercomparison Projects (CMIP6) climate models. This tool enables users to select a region of interest around a country, choose from a variety of climate models, and examine different climate variables across several Shared Socioeconomic Pathways (SSPs).
 
-This tool can be run by downloading and clicking the VARUNA.bat executable file. 
+This tool can be run by downloading and clicking the VARUNA.bat executable file.
 
 Learn more about CMIP6 models, the climate forecasts and about the Intergovernmental Panel on Climate Change (IPCC):
 1) Simple explanation on CMIP6 and IPCC: https://www.carbonbrief.org/cmip6-the-next-generation-of-climate-models-explained/
@@ -21,6 +21,9 @@ Learn more about CMIP6 models, the climate forecasts and about the Intergovernme
 
 
 ### Climate Models and Scenarios
+
+![Example Image](https://raw.githubusercontent.com/SamMajumder/VARUNA/main/app-screenshot.png "This is an example image")
+
 This tool visualizes forecasts from 35 CMIP6 global climate models, helping predict how the climate could evolve based on various internal and external factors. The SSPs available in V.A.R.U.N.A. represent different pathways of socioeconomic development, affecting greenhouse gas emissions and land use in the future, including:
 - **SSP 126**: A sustainable path aiming for a low greenhouse gas concentration.
 - **SSP 245**: A middle-of-the-road scenario.
