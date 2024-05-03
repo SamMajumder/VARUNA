@@ -3,26 +3,40 @@
 ###########
 ## install R PACKAGES 
 #### 
-install.packages("reticulate")
-install.packages("here")
-install.packages("terra")
-install.packages("sf")
-install.packages("leaflet")
-install.packages("tidyverse")
-install.packages("shiny")
-install.packages("shinyWidgets")
-install.packages("htmlwidgets")
-install.packages("RColorBrewer")
-install.packages("shiny.exe")
-install.packages("leaflet.providers")
+#install.packages("reticulate")
+#install.packages("here")
+#install.packages("terra")
+#install.packages("sf")
+#install.packages("leaflet")
+#install.packages("tidyverse")
+#install.packages("shiny")
+#install.packages("shinyWidgets")
+#install.packages("htmlwidgets")
+#install.packages("RColorBrewer")
+#install.packages("shiny.exe")
+#install.packages("leaflet.providers")
 
 
 ### loading reticulate
 library(reticulate)
 
+# Create a virtual environment for the project
+virtualenv_create(envname = "VARUNA")
+
+# Use the created virtual environment
+use_virtualenv("VARUNA", required = TRUE)
+
+### install python 
+install_python(version = "3.10")
+
 
 # Install necessary Python packages
-py_install(c("geopandas", "matplotlib", "boto3", "s3fs", "xarray", "h5netcdf", "shapely", "rioxarray","netCDF4"))
+py_install(c("numpy","geopandas", "matplotlib", "boto3", "s3fs", "xarray", "h5netcdf", "shapely", "rioxarray","netCDF4"),pip = TRUE)
+
+
+# Verify installation by importing a module
+py_run_string("import geopandas")
+
 
 ### loading the rest of the necessary R package
 library(here)
@@ -35,10 +49,6 @@ library(shiny)
 library(shinyWidgets)
 library(htmlwidgets)
 library(leaflet.providers)
-
-
-# Use the created virtual environment
-#use_virtualenv("VARUNA", required = TRUE)
 
 ## path python functions
 here::here("utils.py") 
