@@ -1,4 +1,11 @@
 
+library(reticulate)
+
+# Use the created virtual environment
+use_virtualenv("VARUNA", required = TRUE)
+
+
+
 library(shiny.exe)
 library(here)
 

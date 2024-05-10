@@ -3,18 +3,18 @@
 ###########
 ## install R PACKAGES 
 #### 
-#install.packages("reticulate")
-#install.packages("here")
-#install.packages("terra")
-#install.packages("sf")
-#install.packages("leaflet")
-#install.packages("tidyverse")
-#install.packages("shiny")
-#install.packages("shinyWidgets")
-#install.packages("htmlwidgets")
-#install.packages("RColorBrewer")
-#install.packages("shiny.exe")
-#install.packages("leaflet.providers")
+install.packages("reticulate")
+install.packages("here")
+install.packages("terra")
+install.packages("sf")
+install.packages("leaflet")
+install.packages("tidyverse")
+install.packages("shiny")
+install.packages("shinyWidgets")
+install.packages("htmlwidgets")
+install.packages("RColorBrewer")
+install.packages("shiny.exe")
+install.packages("leaflet.providers")
 
 
 ### loading reticulate

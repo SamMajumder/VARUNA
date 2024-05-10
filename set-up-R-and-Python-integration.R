@@ -33,4 +33,5 @@ install.packages("shiny")
 install.packages("shinyWidgets")
 install.packages("htmlwidgets")
 install.packages("RColorBrewer")
-install.packages("shiny.exe")
+install.packages("shiny.exe") 
+
