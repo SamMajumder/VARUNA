@@ -1,0 +1,19 @@
+# Core dependencies
+streamlit
+streamlit-option-menu
+folium
+streamlit-folium
+matplotlib
+branca
+geopandas
+shapely
+rioxarray
+xarray
+h5netcdf
+netCDF4
+numpy
+osmnx
+boto3
+s3fs
+aiobotocore
+botocore
