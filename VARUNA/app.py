@@ -16,6 +16,10 @@ from visualization_page import *
 
 
 
+
+
+
+
 def main():
     st.title('VARUNA')
     # Sidebar navigation

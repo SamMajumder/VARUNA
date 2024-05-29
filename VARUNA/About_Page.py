@@ -5,16 +5,27 @@ Created on Wed May 15 09:28:16 2024
 @author: Dr. M
 """
 
-import streamlit as st
+
 import os
+import sys
+import streamlit as st
 
 def about_page():
-    st.title("About VARUNA")
+    # Determine if running as a script or frozen executable
+    if getattr(sys, 'frozen', False):
+        application_path = sys._MEIPASS
+    else:
+        application_path = os.path.dirname(os.path.abspath(__file__))
 
-    # Display the image
-    image_path = os.path.join("VARUNA-concept-art.webp")
-    st.image(image_path, caption="Created using DALL-E by OpenAI.")
+    image_path = os.path.join(application_path, "VARUNA-concept-art.png")
 
+    # Check if the image file exists
+    if not os.path.exists(image_path):
+        st.error(f"Image file not found: {image_path}")
+    else:
+        st.image(image_path, caption="Created using DALL-E by OpenAI.")
+
+    st.title("About V.A.R.U.N.A.")
     st.markdown("""
     # V.A.R.U.N.A.
     **Visual Analyzer for Regional Understanding of Numerical Atmospheric data**
@@ -60,5 +71,7 @@ def about_page():
     1. NASA Earth Exchange Global Daily Downscaled Projections (NEX-GDDP-CMIP6) was accessed on 2024-05-02 from [here](https://registry.opendata.aws/nex-gddp-cmip6). NEX-GDDP-CMIP6 data was accessed on [date] from [here](https://registry.opendata.aws/nex-gddp-cmip6).
     2. This tool was developed by Dr. Sambadi Majumder. For any questions and suggestions please feel free to email sambadimajumder@gmail.com.
     3. The source code and citations for libraries used can be found [here](https://github.com/SamMajumder/VARUNA).
+    
     """)
+
 

@@ -10,6 +10,7 @@ from utils import *
 from streamlit_folium import st_folium
 import io
 
+
 def data_visualization_page():
     # Title for the page
     st.title("Data Visualization")
@@ -53,7 +54,8 @@ def data_visualization_page():
                 file_obj = io.BytesIO(bytes_data)
                 
                 # Load the dataset from the BytesIO object
-                st.session_state["datasets"][scenario] = xr.open_dataset(file_obj)
+                ds = xr.open_dataset(file_obj)
+                st.session_state["datasets"][scenario] = ds
                 st.write(f"Loaded dataset '{uploaded_file.name}' as {scenario}")
 
     # Visualization
@@ -69,9 +71,8 @@ def data_visualization_page():
                 maps_data = generate_maps(ds, variable)
 
                 month_index = st.slider('Select a Month', min_value=1, max_value=12, value=1, key=f'month_{scenario}')
-                year_value = st.slider('Select a Year', min_value=2041, max_value=2060, value=2041, key=f'year_{scenario}')
 
-                selected_map_info = next((item for item in maps_data if item['month'] == month_index and item['year'] == year_value), None)
+                selected_map_info = next((item for item in maps_data if item['month'] == month_index), None)
 
                 if selected_map_info:
                     min_val = selected_map_info['data'].min()
@@ -79,9 +80,8 @@ def data_visualization_page():
                     create_colorbar_file(plt.get_cmap('RdYlBu_r'), min_val, max_val)
                     map_obj = create_folium_map(selected_map_info)
                     map_return = st_folium(map_obj, width=700, height=500)
-                    st.image('colorbar.png', caption='Temperature Color Scale')
+                    st.image('colorbar.png', caption='Color Scale')
                 else:
-                    st.write("No data available for the selected month and year.")
+                    st.write("No data available for the selected month.")
     else:
         st.write("Welcome to VARUNA-1.0! Please upload NetCDF files for the scenarios and click 'Load Data'.")
-

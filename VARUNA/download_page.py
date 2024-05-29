@@ -36,7 +36,7 @@ def data_retrieval_page():
     model_choice = st.selectbox("CMIP6 Model Choice", valid_models)
     variable_choice = st.selectbox("Climate Variable", climate_variables)
     place_name = st.text_input("Place Name")
-    target_year = st.number_input("Target Year", min_value=1900, max_value=2100, step=1)
+    target_year = st.number_input("Target Year", min_value=2050, max_value=2100, step=1)
     output_folder = st.text_input("Output Folder")
 
     # Submit button

@@ -189,16 +189,19 @@ def prepare_cmip6_netcdf(start_year, end_year, model, scenario, variable, bounds
         combined_nc = xr.concat(datasets, dim="time")
         # Create a multi-index by extracting 'month' and 'year' from 'time' dimension
         combined_nc['month'] = combined_nc['time'].dt.month
-        combined_nc['year'] = combined_nc['time'].dt.year
-        combined_nc = combined_nc.set_index(time=['month', 'year'])
-
-        # Sort by the new multi-index
-        combined_nc = combined_nc.unstack('time').sortby(['month', 'year']).stack()
+        combined_nc['year'] = combined_nc['time'].dt.year 
+        
+        # Group by 'month' and calculate the mean across all years
+        combined_nc_mean = combined_nc.groupby('month', squeeze=False).mean(dim='time')
+       
+        
+        
         print(f"All datasets for variable {variable} processed successfully.")
     else:
-        combined_nc = None
+        combined_nc_mean = None
         print(f"No datasets were processed for variable {variable}.")
-    return combined_nc
+        
+    return combined_nc_mean
 
 ############
 #### 
@@ -250,26 +253,30 @@ def export_datasets_to_netcdf(dataset_dict, output_folder):
         print(f"Saved dataset '{dataset_name}' to '{output_path}'")
 
 
-##########
+
+#########
+## 
+#####
 ### 
 
 #######   
 def generate_maps(ds, variable):
     maps_data = []
-    for year in ds.year.values:
-        for month in ds.month.values:
-            data = ds[variable].sel(month=month, year=year)
-            data_numpy = data.values
-            lat = data.lat.values
-            lon = data.lon.values
-            maps_data.append({
-                'data': data_numpy,
-                'lat_bounds': [lat.min(), lat.max()],
-                'lon_bounds': [lon.min(), lon.max()],
-                'month': month,
-                'year': year
-            })
+    for month in ds.month.values:
+        data = ds[variable].sel(month=month)
+        
+        
+        data_numpy = data.values
+        lat = data.lat.values
+        lon = data.lon.values
+        maps_data.append({
+            'data': data_numpy,
+            'lat_bounds': [lat.min(), lat.max()],
+            'lon_bounds': [lon.min(), lon.max()],
+            'month': month
+        })
     return maps_data
+
 
 def create_folium_map(map_info):
     data_numpy = map_info['data']
@@ -291,7 +298,7 @@ def create_folium_map(map_info):
 
     folium.raster_layers.ImageOverlay(
         image=data_numpy,
-        bounds=[lat_bounds, lon_bounds],
+        bounds=[[lat_bounds[0], lon_bounds[0]], [lat_bounds[1], lon_bounds[1]]],
         colormap=lambda x: colormap(norm(x)),
         opacity=0.6
     ).add_to(m)
@@ -300,10 +307,13 @@ def create_folium_map(map_info):
         colors=[colormap(i) for i in np.linspace(0, 1, num=256)],
         vmin=data_numpy.min(),
         vmax=data_numpy.max(),
-        caption='Temperature'
+        caption=''
     )
     m.add_child(colorbar)
     folium.LayerControl().add_to(m)
+    
+    # Explicitly set the map to fit the bounds
+    m.fit_bounds([[lat_bounds[0], lon_bounds[0]], [lat_bounds[1], lon_bounds[1]]])
     
     return m
 
