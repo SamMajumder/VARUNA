@@ -1,4 +1,4 @@
-# V.A.R.U.N.A. - Visual Analyzer for Regional Understanding of Numerical Atmospheric forecasts
+# V.A.R.U.N.A. - Visual Analyzer for Regional Understanding of Numerical Atmospheric data
 
 
 <p align="center">
@@ -10,21 +10,96 @@
 
 ## About V.A.R.U.N.A.
 
-V.A.R.U.N.A., named after the Hindu deity of sky, ocean, and celestial order, is a tool designed for visualizing atmospheric forecasts derived from the Coupled Model Intercomparison Projects (CMIP6) climate models. This tool enables users to select a region of interest around a country, choose from a variety of climate models, and examine different climate variables across several Shared Socioeconomic Pathways (SSPs).
+V.A.R.U.N.A., named after the Hindu deity of sky, ocean, and celestial order, is a tool designed for retrieving  and visualizing atmospheric data derived from the Coupled Model Intercomparison Projects (CMIP6) climate models. This tool enables users to select a region of interest around a country or continent, choose from a variety of climate models, and examine different climate variables across several Shared Socioeconomic Pathways (SSPs).
 
-This tool can be run by downloading and clicking the VARUNA.bat executable file.
-
-Learn more about CMIP6 models, the climate forecasts and about the Intergovernmental Panel on Climate Change (IPCC):
-1) Simple explanation on CMIP6 and IPCC: https://www.carbonbrief.org/cmip6-the-next-generation-of-climate-models-explained/
-2) IPCC: https://www.ipcc.ch/
-3) CMIP6: https://www.carbonbrief.org/cmip6-the-next-generation-of-climate-models-explained/
+This tool can be run by downloading and clicking the VARUNA-GUI.exe executable file within the folder VARUNA
 
 
-### Climate Models and Scenarios
+## Features
+
+### Data Retrieval
+
+The Data Retrieval page allows users to retrieve climate data based on their selection of CMIP6 models, climate variables, location, and target year. Key features include:
+
+- **Model Selection**: Choose from up to 35 CMIP6 models. The full list of available models includes:
+  1. ACCESS-CM2
+  2. ACCESS-ESM1-5
+  3. BCC-CSM2-MR
+  4. CanESM5
+  5. CESM2-WACCM
+  6. CESM2
+  7. CMCC-CM2-SR5
+  8. CMCC-ESM2
+  9. CNRM-CM6-1
+  10. CNRM-ESM2-1
+  11. EC-Earth3-Veg-LR
+  12. EC-Earth3
+  13. FGOALS-g3
+  14. GFDL-CM4
+  15. GFDL-CM4_gr1
+  16. GFDL-ESM4
+  17. GISS-E2-1-G
+  18. HadGEM3-GC31-LL
+  19. HadGEM3-GC31-MM
+  20. IITM-ESM
+  21. INM-CM4-8
+  22. INM-CM5-0
+  23. IPSL-CM6A-LR
+  24. KACE-1-0-G
+  25. KIOST-ESM
+  26. MIROC-ES2L
+  27. MIROC6
+  28. MPI-ESM1-2-HR
+  29. MPI-ESM1-2-LR
+  30. MRI-ESM2-0
+  31. NESM3
+  32. NorESM2-LM
+  33. NorESM2-MM
+  34. TaiESM1
+  35. UKESM1-0-LL
+
+  Learn more about CMIP6 models and about the Intergovernmental Panel on Climate Change (IPCC):
+  1) Simple explanation on CMIP6 and IPCC: https://www.carbonbrief.org/cmip6-the-next-generation-of-climate-models-explained/
+  2) IPCC: https://www.ipcc.ch/
+  3) CMIP6: https://www.carbonbrief.org/cmip6-the-next-generation-of-climate-models-explained/
+
+
+- **Variable Selection**: Select from 9 climate variables:
+  - **tas**: Temperature at Surface (units: Kelvin)
+  - **tasmax**: Maximum Temperature at Surface (units: Kelvin)
+  - **tasmin**: Minimum Temperature at Surface (units: Kelvin)
+  - **pr**: Precipitation flux (units: kg m-2 s-1)
+  - **hurs**: Relative Humidity (units: percent)
+  - **huss**: Specific Humidity (units: dimensionless fraction)
+  - **rlds**: Downwelling Longwave Radiation at Surface (units: W m-2)
+  - **rsds**: Downwelling Shortwave Radiation at Surface (units: W m-2)
+  - **sfcWind**: Mean Surface Wind Speed (units: meters per second)
+
+
+  More information about these variables and how they are measured can be found here: https://pcmdi.llnl.gov/mips/cmip3/variableList.html
+
+
+- **Location Input**: Enter the name of the place for which you want to retrieve data (preferably, a country or continent). Map data used is courtesy of copyrighted OpenStreetMap contributors and is available from https://www.openstreetmap.org. The Python library OSMnx provides an easy interface to this data.
+- **Year Selection**: Specify the target year for the data retrieval. The data is fetched for a time range spanning 20 years around the target year (9 years before and 10 years after the target year) and then it is averaged across all years for a given month. This means a rolling monthly average is calculated around the target year.
+- **Output Folder**: Define the folder where the retrieved data will be saved.
+
+
+### Data Visualization
+
+The Data Visualization page enables users to upload NetCDF files for different climate scenarios and visualize the data over basemap. Key features include:
 
 ![Example Image](https://raw.githubusercontent.com/SamMajumder/VARUNA/main/app-screenshot.png "This is an example image")
 
-This tool visualizes forecasts from 35 CMIP6 global climate models, helping predict how the climate could evolve based on various internal and external factors. The SSPs available in V.A.R.U.N.A. represent different pathways of socioeconomic development, affecting greenhouse gas emissions and land use in the future, including:
+
+- **File Upload**: Upload NetCDF files for various SSP scenarios.
+- **Variable Selection**: Choose the climate variable to visualize.
+- **Maps**: Generate and display the data on basemaps using Folium Python library.
+- **Monthly Data Navigation**: Use a slider to navigate through the data for different months.
+
+
+## SSP Scenarios
+
+The SSPs available, represent different pathways of socioeconomic development, affecting greenhouse gas emissions and land use in the future, including:
 - **SSP 126**: A sustainable path aiming for a low greenhouse gas concentration.
 - **SSP 245**: A middle-of-the-road scenario.
 - **SSP 370**: High greenhouse gas emissions due to energy-intensive consumption.
@@ -37,20 +112,6 @@ A great resource to learn more about SSPs apart from the original publication: h
 Riahi, K., van Vuuren, D. P., Kriegler, E., Edmonds, J., O’Neill, B. C., Fujimori, S., Bauer, N., Calvin, K., Dellink, R., Fricko, O., Lutz, W., Popp, A., Crespo Cuaresma, J., KC, S., Leimbach, M., Jiang, L., Kram, T., Rao, S., Emmerling, J., ... Tavoni, M. (2017). The Shared Socioeconomic Pathways and their energy, land use, and greenhouse gas emissions implications: An overview. Global Environmental Change, 42, 153-168. https://doi.org/10.1016/j.gloenvcha.2016.05.009
 
 
-### Climate Variables
-The app allows exploration of various climate variables such as:
-- **tas**: Temperature at Surface (units: Kelvin)
-- **tasmax**: Maximum Temperature at Surface (units: Kelvin)
-- **tasmin**: Minimum Temperature at Surface (units: Kelvin)
-- **pr**: Precipitation flux (units: kg m-2 s-1)
-- **hurs**: Relative Humidity (units: percent)
-- **huss**: Specific Humidity (units: dimensionless fraction)
-- **rlds**: Downwelling Longwave Radiation at Surface (units: W m-2)
-- **rsds**: Downwelling Shortwave Radiation at Surface (units: W m-2)
-- **sfcWind**: Mean Surface Wind Speed (units: meters per second)
-
-More information about these variables and how they are measured can be found here: https://pcmdi.llnl.gov/mips/cmip3/variableList.html
-
 ## Data Source
 
 The NEX-GDDP-CMIP6 dataset, provided by NASA Earth Exchange, comprises global downscaled climate scenarios derived from the General Circulation Model (GCM) runs conducted under CMIP6. Developed in support of the IPCC's Sixth Assessment Report, these high-resolution, bias-corrected projections are distributed through the Earth System Grid Federation. The dataset spans all four 'Tier 1' SSPs, offering insights into climate change impacts on processes sensitive to climate gradients and local topography.
@@ -59,14 +120,10 @@ The NEX-GDDP-CMIP6 dataset, provided by NASA Earth Exchange, comprises global do
 
 NASA Earth Exchange Global Daily Downscaled Projections (NEX-GDDP-CMIP6) was accessed on 2024-05-02 from https://registry.opendata.aws/nex-gddp-cmip6. NEX-GDDP-CMIP6 data was accessed on [date] from https://registry.opendata.aws/nex-gddp-cmip6
 
-## Technology Stack
 
-- **Data Retrieval and Preparation**: Python utility functions are used to retrieve and prepare the CMIP6 data from the Registry of Open Data on AWS.
-- **Visualization and App Framework**: The visualization and interaction with the data are facilitated through an R Shiny application. This app leverages the robust capabilities of R for statistical analysis and the Shiny framework for creating interactive web applications.
+## Libraries used in this project
 
-### Citation
-
-#### Python libraries:
+This work would not have been possible without the following Python libraries. A big thanks to all the incredible developers and maintainers for these libraries.
 
 1. **GeoPandas**
    - Joris Van den Bossche, et al. GeoPandas: Python tools for geographic data, (2014), GitHub repository, https://github.com/geopandas/geopandas
@@ -98,52 +155,25 @@ NASA Earth Exchange Global Daily Downscaled Projections (NEX-GDDP-CMIP6) was acc
 10. **netCDF4**
     - Unidata. netCDF4: Python/numpy interface to the netCDF C library, (2021), GitHub repository, https://github.com/Unidata/netcdf4-python
 
+11. **folium**
+    - python-visualization. (2020). Folium. Retrieved from https://python-visualization.github.io/folium/
 
-#### R libraries:
+12. **osmnx**
+    - Boeing, G. (2024). Modeling and Analyzing Urban Networks and Amenities with OSMnx. Working paper. https://geoffboeing.com/publications/osmnx-paper/
 
-1. **reticulate**
-   - Ushey, K., Allaire, J., & Tang, Y. (2020). reticulate: Interface to Python. R package version 1.18. https://CRAN.R-project.org/package=reticulate
+13. **streamlit**
+    - https://docs.streamlit.io/
 
-2. **here**
-   - Müller, K. (2017). here: A simpler way to find your files. R package version 0.1. https://CRAN.R-project.org/package=here
+14. **streamlit_folium**
+    - https://folium.streamlit.app/
 
-3. **terra**
-   - Hijmans, R. J. (2021). terra: Spatial Data Analysis. R package version 1.3-22. https://CRAN.R-project.org/package=terra
+15. **numpy**
+    - Harris, C.R., Millman, K.J., van der Walt, S.J. et al. Array programming with NumPy. Nature 585, 357–362 (2020). https://doi.org/10.1038/s41586-020-2649-2
 
-4. **sf**
-   - Pebesma, E. (2018). Simple Features for R: Standardized Support for Spatial Vector Data. The R Journal, 10(1), 439-446. https://doi.org/10.32614/RJ-2018-009
 
-5. **RColorBrewer**
-   - Neuwirth, E. (2014). RColorBrewer: ColorBrewer Palettes. R package version 1.1-2. https://CRAN.R-project.org/package=RColorBrewer
+## Acknowledgement to OpenStreetMap and OSMnx
 
-6. **leaflet**
-   - Cheng, J., Karambelkar, B., & Xie, Y. (2021). leaflet: Create Interactive Web Maps with the JavaScript 'Leaflet' Library. R package version 2.0.4.1. https://CRAN.R-project.org/package=leaflet
-
-7. **tidyverse**
-   - Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D., Spinu, V., ... Yutani, H. (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686. https://doi.org/10.21105/joss.01686
-
-8. **shiny**
-   - Chang, W., Cheng, J., Allaire, J., Xie, Y., & McPherson, J. (2021). shiny: Web Application Framework for R. R package version 1.6.0. https://CRAN.R-project.org/package=shiny
-
-9. **shinyWidgets**
-   - Perrier, V., Meyer, F., & Granjon, D. (2021). shinyWidgets: Custom Inputs Widgets for Shiny. R package version 0.6.0. https://CRAN.R-project.org/package=shinyWidgets
-
-10. **htmlwidgets**
-    - Vaidyanathan, R., Xie, Y., Allaire, J., Cheng, J., & Russell, K. (2020). htmlwidgets: HTML Widgets for R. R package version 1.5.3. https://CRAN.R-project.org/package=htmlwidgets
-
-11. **leaflet.providers**
-    - Rudis, B. (2020). leaflet.providers: Leaflet Providers. R package version 1.9.0. https://CRAN.R-project.org/package=leaflet.providers
-
-### Important Scripts
-
-#### **`app.R`**
-This R script orchestrates the user interface and server logic of the Shiny application for the V.A.R.U.N.A. project. It sets up the interactive web-based dashboard which allows users to visualize atmospheric forecasts derived from CMIP6 models. The script integrates various R packages for data handling (`terra`, `sf`), visualization (`leaflet`, `RColorBrewer`), and web app development (`shiny`, `shinyWidgets`). It uses a Python virtual environment through the `reticulate` package to leverage utility functions defined in Python for data retrieval and preprocessing.
-
-#### **`R-functions.R`**
-This R script contains custom functions used within the Shiny application to handle specific tasks such as dynamic map generation and data manipulation. The `createMap` function, for instance, dynamically generates leaflet maps based on user inputs from the app interface, adjusting display properties according to the selected climate data layers. This script enhances modularity and reusability by separating function definitions from the main application logic in `app.R`.
-
-#### **`utils.py`**
-This Python script provides utility functions for data retrieval and preprocessing, essential for the backend operations of the V.A.R.U.N.A. project. It includes functions to download and process climate model data from the Registry of Open Data on AWS, using libraries such as `boto3`, `s3fs`, and `xarray` to handle data in various formats (e.g., netCDF). The script also integrates spatial analysis tools from `geopandas` and `rioxarray` to adjust and prepare the data for visualization in the Shiny application.
+As mentioned earlier, this application uses OpenStreetMap data to enable the user to select the location during data retrieval process. Map data copyrighted OpenStreetMap contributors and available from https://www.openstreetmap.org . The awesome OSMnx Python library makes it possible to seamlessly interact with the OpenStreetMap data.
 
 
 ## Contact
